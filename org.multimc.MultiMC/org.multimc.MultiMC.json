@@ -1,20 +1,32 @@
 {
     "app-id": "org.multimc.MultiMC",
-    "runtime": "org.freedesktop.Platform",
-    "runtime-version": "19.08",
-    "sdk": "org.freedesktop.Sdk",
-    "command": "multimc",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "5.13",
+    "sdk": "org.kde.Sdk",
+    "sdk-extensions" : [ "org.freedesktop.Sdk.Extension.openjdk8" ],
+    "command": "MultiMC",
     "modules": [
+	{
+	    "name" : "openjdk",
+	    "buildsystem" : "simple",
+	    "build-commands" : [
+		    "/usr/lib/sdk/openjdk8/install.sh"
+	    ]
+	},
         {
             "name": "multimc",
-	    "buildsystem": "cmake",
-	    "config-opts": [
+	    "buildsystem": "simple",
+	    "build-commands" : [
+		    "ls -l MultiMC/",
+		    "mkdir -p /app/bin/bin",
+		    "install -Dm744 MultiMC/MultiMC /app/bin/MultiMC",
+		    "cp -r MultiMC/bin /app/bin/"
 	    ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://github.com/MultiMC/MultiMC5",
-		    "tag": "0.6.7"
+                    "type": "archive",
+                    "url": "https://files.multimc.org/downloads/mmc-stable-lin64.tar.gz",
+		    "sha256": "ec47f28dcf7952ccbfbcc48b787f01ce945738eea086ae7243e625b636a4ceaa"
                 }
             ]
         }
