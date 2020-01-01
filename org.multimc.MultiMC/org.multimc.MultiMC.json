@@ -5,6 +5,13 @@
     "sdk": "org.kde.Sdk",
     "sdk-extensions" : [ "org.freedesktop.Sdk.Extension.openjdk8" ],
     "command": "MultiMC",
+    "finish-args": [
+	    "--socket=x11",
+	    "--share=ipc",
+	    "--device=dri",
+	    "--socket=pulseaudio",
+	    "--share=network"
+    ],
     "modules": [
 	{
 	    "name" : "openjdk",
@@ -19,8 +26,10 @@
 	    "build-commands" : [
 		    "ls -l MultiMC/",
 		    "mkdir -p /app/bin/bin",
-		    "install -Dm744 MultiMC/MultiMC /app/bin/MultiMC",
-		    "cp -r MultiMC/bin /app/bin/"
+		    "install -Dm744 MultiMC/bin/MultiMC /app/bin/MultiMC",
+		    "echo $LD_LIBRARY_PATH",
+		    "mkdir /app/lib",
+		    "cp MultiMC/bin/*.so /app/lib/"
 	    ],
             "sources": [
                 {
