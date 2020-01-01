@@ -1,0 +1,22 @@
+{
+    "app-id": "org.multimc.MultiMC",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "19.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "multimc",
+    "modules": [
+        {
+            "name": "multimc",
+	    "buildsystem": "cmake",
+	    "config-opts": [
+	    ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/MultiMC/MultiMC5",
+		    "tag": "0.6.7"
+                }
+            ]
+        }
+    ]
+}
